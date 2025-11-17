@@ -17,7 +17,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -37,9 +37,10 @@ export default function Navigation() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/90 backdrop-blur-md shadow-lg'
+            ? 'bg-white/80 backdrop-blur-xl shadow-soft'
             : 'bg-transparent'
         }`}
       >
@@ -49,50 +50,58 @@ export default function Navigation() {
             <a
               href="#hero"
               onClick={(e) => handleNavClick(e, '#hero')}
-              className="flex flex-col leading-tight"
+              className="flex flex-col leading-tight group"
             >
-              <span className="font-serif text-xl lg:text-2xl font-bold text-dark-brown">
+              <span className="font-serif text-xl lg:text-2xl font-bold text-neutral-900 group-hover:text-accent-700 transition-colors">
                 Thomas Kaufmann
               </span>
-              <span className="text-xs text-text-medium tracking-wider uppercase">
+              <span className="text-xs text-neutral-500 tracking-wider uppercase">
                 Psychotherapie
               </span>
             </a>
 
             {/* Desktop Nav */}
-            <ul className="hidden md:flex items-center gap-8">
+            <ul className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="text-text-dark hover:text-primary-terracotta transition-colors font-medium relative group"
+                    className="px-4 py-2 text-neutral-700 hover:text-neutral-900 transition-colors font-medium relative group rounded-xl hover:bg-neutral-100"
                   >
                     {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-terracotta transition-all group-hover:w-full" />
                   </a>
                 </li>
               ))}
             </ul>
 
+            {/* CTA Button */}
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="hidden md:inline-flex items-center px-6 py-2.5 bg-neutral-900 text-white rounded-xl font-medium hover:bg-neutral-800 transition-all duration-300 hover:shadow-soft"
+            >
+              Termin
+            </a>
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-neutral-100 transition-colors"
               aria-label="Menu"
             >
               <span
-                className={`w-6 h-0.5 bg-dark-brown transition-all ${
+                className={`w-5 h-0.5 bg-neutral-900 transition-all duration-300 ${
                   isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
                 }`}
               />
               <span
-                className={`w-6 h-0.5 bg-dark-brown transition-all ${
+                className={`w-5 h-0.5 bg-neutral-900 transition-all duration-300 ${
                   isMobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`w-6 h-0.5 bg-dark-brown transition-all ${
+                className={`w-5 h-0.5 bg-neutral-900 transition-all duration-300 ${
                   isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
                 }`}
               />
@@ -105,28 +114,42 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-6 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-white md:hidden"
           >
-            <ul className="flex flex-col gap-6">
-              {navItems.map((item) => (
-                <motion.li
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                >
-                  <a
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className="text-2xl font-medium text-dark-brown hover:text-primary-terracotta transition-colors"
+            <div className="pt-24 px-6 pb-6 h-full flex flex-col">
+              <ul className="flex flex-col gap-2">
+                {navItems.map((item, index) => (
+                  <motion.li
+                    key={item.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    {item.label}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
+                    <a
+                      href={item.href}
+                      onClick={(e) => handleNavClick(e, item.href)}
+                      className="block text-2xl font-semibold text-neutral-900 hover:text-accent-700 transition-colors py-3"
+                    >
+                      {item.label}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+
+              <div className="mt-auto pt-8 border-t border-neutral-200">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="block w-full text-center px-8 py-4 bg-neutral-900 text-white rounded-2xl font-medium"
+                >
+                  Termin vereinbaren
+                </a>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

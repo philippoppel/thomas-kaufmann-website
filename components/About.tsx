@@ -4,6 +4,21 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
+const features = [
+  {
+    title: 'Lösungsorientiert',
+    description: 'Konkrete, umsetzbare Strategien für Ihren Alltag',
+  },
+  {
+    title: 'Auf Augenhöhe',
+    description: 'Transparente, respektvolle Zusammenarbeit',
+  },
+  {
+    title: 'Krisenkompetenz',
+    description: 'Professionelle Unterstützung in akuten Situationen',
+  },
+]
+
 export default function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
@@ -14,76 +29,69 @@ export default function About() {
       ref={ref}
       className="py-32 px-6 lg:px-8 bg-white"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center space-y-8"
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="space-y-20"
         >
-          <p className="text-accent-olive uppercase tracking-widest text-sm font-medium">
-            Über mich
-          </p>
-
-          <h2 className="font-serif text-4xl lg:text-6xl font-bold text-dark-brown">
-            Klarheit in Krisenmomenten
-          </h2>
-
-          <div className="space-y-6 text-xl lg:text-2xl text-text-medium font-light leading-relaxed max-w-3xl mx-auto">
-            <p>
-              Als Psychotherapeut in Ausbildung unter Supervision verbinde ich fundierte
-              <span className="text-primary-terracotta font-medium"> Verhaltenstherapie</span> mit meiner
-              langjährigen Erfahrung als <span className="text-primary-terracotta font-medium">Notfallsanitäter</span>.
+          {/* Header */}
+          <div className="max-w-3xl">
+            <p className="text-accent-600 text-sm font-medium uppercase tracking-wider mb-6">
+              Über mich
             </p>
 
-            <p>
-              Diese Kombination ermöglicht mir einen besonderen Zugang: Ich verstehe akute Belastungen
-              und biete gleichzeitig wissenschaftlich fundierte Werkzeuge für nachhaltige Veränderung.
-            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
+              Klarheit in Krisenmomenten
+            </h2>
 
-            <p className="text-lg lg:text-xl pt-4">
-              Ausbildung an der <strong>Sigmund Freud Universität Wien</strong> ·
-              Notfallsanitäter mit <strong>NKA/NKV</strong> Qualifikation
-            </p>
+            <div className="space-y-6 text-lg md:text-xl text-neutral-600 leading-relaxed">
+              <p>
+                Als Psychotherapeut in Ausbildung unter Supervision verbinde ich fundierte{' '}
+                <span className="text-accent-700 font-medium">Verhaltenstherapie</span> mit meiner
+                langjährigen Erfahrung als{' '}
+                <span className="text-accent-700 font-medium">Notfallsanitäter</span>.
+              </p>
+
+              <p>
+                Diese Kombination ermöglicht mir einen besonderen Zugang: Ich verstehe akute
+                Belastungen und biete gleichzeitig wissenschaftlich fundierte Werkzeuge für
+                nachhaltige Veränderung.
+              </p>
+            </div>
+
+            <div className="mt-8 pt-8 border-t border-neutral-200">
+              <p className="text-neutral-700">
+                Ausbildung an der <strong className="text-neutral-900">Sigmund Freud Universität Wien</strong>
+                {' · '}
+                Notfallsanitäter mit <strong className="text-neutral-900">NKA/NKV</strong> Qualifikation
+              </p>
+            </div>
           </div>
 
-          {/* Key Points */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid md:grid-cols-3 gap-8 pt-12"
-          >
-            <div className="p-8 rounded-2xl bg-primary-beige/50 space-y-3">
-              <div className="text-4xl">🎯</div>
-              <h3 className="font-serif text-xl font-semibold text-dark-brown">
-                Lösungsorientiert
-              </h3>
-              <p className="text-text-medium">
-                Konkrete Strategien für Ihren Alltag
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl bg-primary-beige/50 space-y-3">
-              <div className="text-4xl">🤝</div>
-              <h3 className="font-serif text-xl font-semibold text-dark-brown">
-                Auf Augenhöhe
-              </h3>
-              <p className="text-text-medium">
-                Transparente Zusammenarbeit
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl bg-primary-beige/50 space-y-3">
-              <div className="text-4xl">⚡</div>
-              <h3 className="font-serif text-xl font-semibold text-dark-brown">
-                Krisenkompetenz
-              </h3>
-              <p className="text-text-medium">
-                Auch in akuten Situationen
-              </p>
-            </div>
-          </motion.div>
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="group"
+              >
+                <div className="h-full p-8 rounded-2xl bg-primary-100/50 hover:bg-primary-100 transition-colors duration-300">
+                  <div className="w-12 h-1 bg-accent-600 rounded-full mb-6" />
+                  <h3 className="text-xl font-semibold text-neutral-900 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-neutral-600 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

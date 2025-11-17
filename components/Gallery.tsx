@@ -4,14 +4,39 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Image from 'next/image'
+import { XIcon } from './Icons'
 
 const images = [
   {
     src: '/images/IMG_1186.JPG',
     alt: 'Thomas Kaufmann - Psychotherapeut',
+    category: 'Portrait'
   },
-  // Placeholder für weitere Bilder
-  // Sie können hier weitere Bilder hinzufügen, wenn verfügbar
+  {
+    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80',
+    alt: 'Beruhigende Berglandschaft',
+    category: 'Atmosphäre'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&q=80',
+    alt: 'Ruhiger Wald',
+    category: 'Natur'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80',
+    alt: 'Friedliche Naturszene',
+    category: 'Natur'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1200&q=80',
+    alt: 'Sanfte Hügellandschaft',
+    category: 'Atmosphäre'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80',
+    alt: 'Beruhigender Naturpfad',
+    category: 'Natur'
+  },
 ]
 
 export default function Gallery() {
@@ -24,22 +49,26 @@ export default function Gallery() {
       <section
         id="gallery"
         ref={ref}
-        className="py-32 px-6 lg:px-8 bg-white"
+        className="py-32 px-6 lg:px-8 bg-primary-50"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="text-center space-y-6 mb-16"
           >
-            <p className="text-accent-olive uppercase tracking-widest text-sm font-medium">
-              Einblicke
+            <p className="text-accent-600 text-sm font-medium uppercase tracking-wider">
+              Eindrücke
             </p>
 
-            <h2 className="font-serif text-4xl lg:text-6xl font-bold text-dark-brown">
-              Galerie
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
+              Atmosphäre & Umgebung
             </h2>
+
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+              Ein Ort der Ruhe und Klarheit
+            </p>
           </motion.div>
 
           {/* Gallery Grid */}
@@ -47,38 +76,22 @@ export default function Gallery() {
             {images.map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => setSelectedImage(index)}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-500"
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                  <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    +
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Placeholder Cards - für zukünftige Bilder */}
-            {[1, 2, 3, 4, 5].map((_, index) => (
-              <motion.div
-                key={`placeholder-${index}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: (images.length + index) * 0.1 }}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-primary-beige/30 flex items-center justify-center"
-              >
-                <div className="text-center space-y-2">
-                  <div className="text-4xl opacity-30">📷</div>
-                  <p className="text-sm text-text-medium opacity-50">Weitere Bilder folgen</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/0 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <p className="text-white text-sm font-medium">{image.category}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -94,28 +107,36 @@ export default function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-pointer"
+            className="fixed inset-0 z-50 bg-neutral-900/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
           >
             <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="relative w-full max-w-6xl aspect-[4/3]"
+              onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src={images[selectedImage].src}
                 alt={images[selectedImage].alt}
                 fill
-                className="object-contain"
+                className="object-contain rounded-2xl"
               />
 
               {/* Close Button */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                className="absolute -top-14 right-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               >
-                ✕
+                <XIcon className="w-6 h-6" />
               </button>
+
+              {/* Image Info */}
+              <div className="absolute -bottom-14 left-0 text-white">
+                <p className="text-sm text-white/60">{images[selectedImage].category}</p>
+                <p className="text-lg font-medium">{images[selectedImage].alt}</p>
+              </div>
             </motion.div>
           </motion.div>
         )}
