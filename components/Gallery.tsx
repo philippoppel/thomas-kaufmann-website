@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Image from 'next/image'
@@ -41,15 +41,8 @@ const images = [
 
 export default function Gallery() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-150px' })
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], [30, -30])
 
   return (
     <>
@@ -60,38 +53,22 @@ export default function Gallery() {
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{ y }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center space-y-6 mb-16"
           >
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="text-accent-600 text-sm font-medium uppercase tracking-wider"
-            >
+            <p className="text-accent-600 text-sm font-medium uppercase tracking-wider">
               Eindrücke
-            </motion.p>
+            </p>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 8 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight"
-            >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
               Atmosphäre & Umgebung
-            </motion.h2>
+            </h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xl text-neutral-600 max-w-2xl mx-auto"
-            >
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Ein Ort der Ruhe und Klarheit
-            </motion.p>
+            </p>
           </motion.div>
 
           {/* Gallery Grid */}
@@ -99,27 +76,22 @@ export default function Gallery() {
             {images.map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => setSelectedImage(index)}
-                className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-700 ease-out hover:scale-[1.02]"
+                className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-300 ease-out hover:-translate-y-1"
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/0 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out">
-                  <motion.div
-                    initial={{ y: 10 }}
-                    whileHover={{ y: 0 }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute bottom-0 left-0 right-0 p-6"
-                  >
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/0 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
                     <p className="text-white text-sm font-medium">{image.category}</p>
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -134,7 +106,7 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 z-50 bg-neutral-900/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
           >
@@ -142,7 +114,7 @@ export default function Gallery() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-full max-w-6xl aspect-[4/3]"
               onClick={(e) => e.stopPropagation()}
             >
@@ -156,21 +128,16 @@ export default function Gallery() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-14 right-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 ease-out hover:scale-110"
+                className="absolute -top-14 right-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 ease-out"
               >
                 <XIcon className="w-6 h-6" />
               </button>
 
               {/* Image Info */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute -bottom-14 left-0 text-white"
-              >
+              <div className="absolute -bottom-14 left-0 text-white">
                 <p className="text-sm text-white/60">{images[selectedImage].category}</p>
                 <p className="text-lg font-medium">{images[selectedImage].alt}</p>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         )}
