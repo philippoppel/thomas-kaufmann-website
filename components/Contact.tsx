@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { MailIcon, CalendarIcon, PhoneIcon, MapPinIcon } from './Icons'
+import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 
 const contactInfo = [
   {
@@ -34,7 +34,7 @@ const contactInfo = [
 
 export default function Contact() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, viewportOnce)
 
   return (
     <section
@@ -50,9 +50,8 @@ export default function Contact() {
 
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          {...fadeInUp}
+          animate={isInView ? fadeInUp.animate : fadeInUp.initial}
           className="text-center space-y-8 mb-16"
         >
           <p className="text-accent-200 text-sm font-medium uppercase tracking-wider">
@@ -69,9 +68,14 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* Contact Cards */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-16">
-          {contactInfo.map((item, index) => {
+        {/* Contact Cards with Stagger Animation */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
+          className="grid sm:grid-cols-2 gap-6 mb-16"
+        >
+          {contactInfo.map((item) => {
             const IconComponent = item.icon
             return (
               <motion.a
@@ -79,9 +83,7 @@ export default function Contact() {
                 href={item.href}
                 target={item.label === 'Praxisstandort' ? '_blank' : undefined}
                 rel={item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                variants={staggerItem}
                 className="group bg-white/95 backdrop-blur-sm rounded-2xl p-8 hover:bg-white transition-all duration-300 ease-out shadow-soft hover:shadow-soft-lg hover:-translate-y-1"
               >
                 <div className="flex items-start gap-5">
@@ -100,13 +102,13 @@ export default function Contact() {
               </motion.a>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Additional Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          {...fadeInUp}
+          animate={isInView ? fadeInUp.animate : fadeInUp.initial}
+          transition={{ ...fadeInUp.transition, delay: 0.3 }}
           className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20"
         >
           <h3 className="text-2xl font-bold text-white mb-6 text-center">

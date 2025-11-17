@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 
 const features = [
   {
@@ -21,7 +21,7 @@ const features = [
 
 export default function About() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, viewportOnce)
 
   return (
     <section
@@ -30,14 +30,13 @@ export default function About() {
       className="py-32 px-6 lg:px-8 bg-white"
     >
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-20"
-        >
+        <div className="space-y-20">
           {/* Header */}
-          <div className="max-w-3xl">
+          <motion.div
+            {...fadeInUp}
+            animate={isInView ? fadeInUp.animate : fadeInUp.initial}
+            className="max-w-3xl"
+          >
             <p className="text-accent-600 text-sm font-medium uppercase tracking-wider mb-6">
               Über mich
             </p>
@@ -68,16 +67,19 @@ export default function About() {
                 Notfallsanitäter mit <strong className="text-neutral-900">NKA/NKV</strong> Qualifikation
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+          {/* Features Grid with Stagger Animation */}
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {features.map((feature) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                variants={staggerItem}
                 className="group"
               >
                 <div className="h-full p-8 rounded-2xl bg-primary-100/50 hover:bg-primary-100 transition-all duration-300 ease-out hover:-translate-y-1">
@@ -91,8 +93,8 @@ export default function About() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

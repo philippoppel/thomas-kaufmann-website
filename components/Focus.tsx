@@ -1,8 +1,8 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 
 const focusAreas = [
   {
@@ -33,7 +33,7 @@ const focusAreas = [
 
 export default function Focus() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, viewportOnce)
 
   return (
     <section
@@ -43,9 +43,8 @@ export default function Focus() {
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          {...fadeInUp}
+          animate={isInView ? fadeInUp.animate : fadeInUp.initial}
           className="text-center space-y-6 mb-20"
         >
           <p className="text-accent-600 text-sm font-medium uppercase tracking-wider">
@@ -61,14 +60,17 @@ export default function Focus() {
           </p>
         </motion.div>
 
-        {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {focusAreas.map((area, index) => (
+        {/* Cards Grid with Stagger Animation */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
+          className="grid md:grid-cols-2 gap-8"
+        >
+          {focusAreas.map((area) => (
             <motion.div
               key={area.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              variants={staggerItem}
               className="group relative bg-white rounded-3xl p-10 shadow-soft hover:shadow-soft-lg transition-all duration-300 ease-out border border-neutral-100 hover:-translate-y-1"
             >
               {/* Number */}
@@ -94,13 +96,13 @@ export default function Focus() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Additional Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          {...fadeInUp}
+          animate={isInView ? fadeInUp.animate : fadeInUp.initial}
+          transition={{ ...fadeInUp.transition, delay: 0.3 }}
           className="mt-20 text-center"
         >
           <div className="inline-block bg-white rounded-2xl px-10 py-8 shadow-soft border border-neutral-100 max-w-2xl hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 ease-out">

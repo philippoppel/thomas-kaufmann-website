@@ -1,10 +1,10 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import { XIcon } from './Icons'
+import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 
 const images = [
   {
@@ -41,7 +41,7 @@ const images = [
 
 export default function Gallery() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, viewportOnce)
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
   return (
@@ -53,9 +53,8 @@ export default function Gallery() {
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            {...fadeInUp}
+            animate={isInView ? fadeInUp.animate : fadeInUp.initial}
             className="text-center space-y-6 mb-16"
           >
             <p className="text-accent-600 text-sm font-medium uppercase tracking-wider">
@@ -71,14 +70,17 @@ export default function Gallery() {
             </p>
           </motion.div>
 
-          {/* Gallery Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Gallery Grid with Stagger Animation */}
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {images.map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                variants={staggerItem}
                 onClick={() => setSelectedImage(index)}
                 className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-300 ease-out hover:-translate-y-1"
               >
@@ -86,6 +88,7 @@ export default function Gallery() {
                   src={image.src}
                   alt={image.alt}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/0 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
@@ -95,7 +98,7 @@ export default function Gallery() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
