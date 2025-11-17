@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { MailIcon, CalendarIcon, PhoneIcon, MapPinIcon } from './Icons'
@@ -34,7 +34,14 @@ const contactInfo = [
 
 export default function Contact() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '-150px' })
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [30, -30])
 
   return (
     <section
@@ -50,23 +57,39 @@ export default function Contact() {
 
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          style={{ y }}
           className="text-center space-y-8 mb-16"
         >
-          <p className="text-accent-200 text-sm font-medium uppercase tracking-wider">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-accent-200 text-sm font-medium uppercase tracking-wider"
+          >
             Kontakt
-          </p>
+          </motion.p>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+          <motion.h2
+            initial={{ opacity: 0, y: 8 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight"
+          >
             Bereit für den ersten Schritt?
-          </h2>
+          </motion.h2>
 
-          <p className="text-xl text-accent-100 max-w-2xl mx-auto leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="text-xl text-accent-100 max-w-2xl mx-auto leading-relaxed"
+          >
             Vereinbaren Sie ein unverbindliches Erstgespräch.
             Ich freue mich darauf, Sie kennenzulernen.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Contact Cards */}
@@ -79,13 +102,13 @@ export default function Contact() {
                 href={item.href}
                 target={item.label === 'Praxisstandort' ? '_blank' : undefined}
                 rel={item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-white/95 backdrop-blur-sm rounded-2xl p-8 hover:bg-white transition-all duration-300 shadow-soft hover:shadow-soft-lg hover:-translate-y-1"
+                transition={{ duration: 0.8, delay: 0.3 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="group bg-white/95 backdrop-blur-sm rounded-2xl p-8 hover:bg-white transition-all duration-700 ease-out shadow-soft hover:shadow-soft-lg hover:-translate-y-2 hover:scale-[1.02]"
               >
                 <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-accent-100 flex items-center justify-center text-accent-700 flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-accent-100 flex items-center justify-center text-accent-700 flex-shrink-0 group-hover:scale-110 group-hover:bg-accent-200 transition-all duration-700 ease-out">
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -104,35 +127,53 @@ export default function Contact() {
 
         {/* Additional Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20"
+          transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20 hover:bg-white/15 transition-all duration-700 ease-out"
         >
           <h3 className="text-2xl font-bold text-white mb-6 text-center">
             Wichtige Informationen
           </h3>
           <div className="grid md:grid-cols-2 gap-8 text-white">
-            <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 1, delay: 0.9 }}
+            >
               <p className="text-accent-100 text-sm font-medium mb-2">Sitzungsdauer</p>
               <p className="text-lg">50 Minuten</p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 1, delay: 1 }}
+            >
               <p className="text-accent-100 text-sm font-medium mb-2">Termine</p>
               <p className="text-lg">Nach Vereinbarung</p>
-            </div>
-            <div className="md:col-span-2">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 1, delay: 1.1 }}
+              className="md:col-span-2"
+            >
               <p className="text-accent-100 text-sm font-medium mb-2">Kostenerstattung</p>
               <p className="leading-relaxed">
                 Gerne informiere ich Sie über mögliche Kostenzuschüsse durch Ihre Krankenkasse.
               </p>
-            </div>
+            </motion.div>
           </div>
-          <div className="mt-8 pt-8 border-t border-white/20 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="mt-8 pt-8 border-t border-white/20 text-center"
+          >
             <p className="text-sm text-accent-200">
               Psychotherapeut in Ausbildung unter Supervision gemäß § 27 PthG
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
