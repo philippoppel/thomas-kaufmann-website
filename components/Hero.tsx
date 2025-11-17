@@ -133,6 +133,7 @@ export default function Hero() {
                 fill
                 className="object-cover"
                 priority
+                quality={90}
               />
               {/* Subtle overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/5 to-transparent" />

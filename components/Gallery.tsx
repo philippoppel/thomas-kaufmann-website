@@ -90,6 +90,9 @@ export default function Gallery() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y1ZjNmMCIvPjwvc3ZnPg=="
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/0 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -126,6 +129,7 @@ export default function Gallery() {
                 alt={images[selectedImage].alt}
                 fill
                 className="object-contain rounded-2xl"
+                loading="eager"
               />
 
               {/* Close Button */}

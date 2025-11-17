@@ -19,14 +19,14 @@ export const duration = {
 export const fadeInUp = {
   initial: {
     opacity: 0,
-    y: 24
+    y: 16
   },
   animate: {
     opacity: 1,
     y: 0
   },
   transition: {
-    duration: duration.normal,
+    duration: duration.fast,
     ease: easing.apple,
   }
 }
@@ -65,8 +65,8 @@ export const fadeIn = {
 export const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
+      staggerChildren: 0.05,
+      delayChildren: 0,
     }
   }
 }
@@ -75,13 +75,13 @@ export const staggerContainer = {
 export const staggerItem = {
   initial: {
     opacity: 0,
-    y: 20
+    y: 12
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: duration.normal,
+      duration: duration.fast,
       ease: easing.apple,
     }
   }
