@@ -24,7 +24,8 @@ export default function Hero() {
           <div className="lg:col-span-7 space-y-10">
             {/* Eyebrow */}
             <motion.div
-              {...fadeIn}
+              initial={fadeIn.initial}
+              animate={fadeIn.animate}
               transition={{ delay: 0, duration: duration.normal }}
               className="inline-flex items-center gap-2 px-4 py-2 bg-accent-100 rounded-full"
             >
@@ -37,7 +38,8 @@ export default function Hero() {
             {/* Heading */}
             <div className="space-y-6">
               <motion.h1
-                {...fadeInUp}
+                initial={fadeInUp.initial}
+                animate={fadeInUp.animate}
                 transition={{ delay: 0.1, duration: duration.slow, ease: easing.apple }}
                 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 tracking-tight"
               >
@@ -45,7 +47,8 @@ export default function Hero() {
               </motion.h1>
 
               <motion.p
-                {...fadeInUp}
+                initial={fadeInUp.initial}
+                animate={fadeInUp.animate}
                 transition={{ delay: 0.2, duration: duration.slow, ease: easing.apple }}
                 className="text-lg md:text-xl text-neutral-600 font-light"
               >
@@ -55,7 +58,8 @@ export default function Hero() {
 
             {/* Subheading */}
             <motion.p
-              {...fadeInUp}
+              initial={fadeInUp.initial}
+              animate={fadeInUp.animate}
               transition={{ delay: 0.3, duration: duration.slow, ease: easing.apple }}
               className="text-2xl md:text-3xl lg:text-4xl text-neutral-700 font-light leading-snug max-w-2xl text-balance"
             >
@@ -66,7 +70,8 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              {...fadeInUp}
+              initial={fadeInUp.initial}
+              animate={fadeInUp.animate}
               transition={{ delay: 0.4, duration: duration.slow, ease: easing.apple }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
@@ -94,7 +99,8 @@ export default function Hero() {
 
             {/* Stats */}
             <motion.div
-              {...fadeIn}
+              initial={fadeIn.initial}
+              animate={fadeIn.animate}
               transition={{ delay: 0.5, duration: duration.slow, ease: easing.apple }}
               className="grid grid-cols-3 gap-8 pt-8 border-t border-neutral-200"
             >
@@ -115,7 +121,8 @@ export default function Hero() {
 
           {/* Image */}
           <motion.div
-            {...fadeInScale}
+            initial={fadeInScale.initial}
+            animate={fadeInScale.animate}
             transition={{ delay: 0.2, duration: duration.verySlow, ease: easing.apple }}
             className="lg:col-span-5 relative"
           >
@@ -133,7 +140,8 @@ export default function Hero() {
 
             {/* Floating badge */}
             <motion.div
-              {...fadeInUp}
+              initial={fadeInUp.initial}
+              animate={fadeInUp.animate}
               transition={{ delay: 0.6, duration: duration.slow, ease: easing.apple }}
               className="absolute -bottom-6 -left-6 right-6 lg:right-auto lg:w-auto bg-white rounded-2xl shadow-soft-lg p-6 backdrop-blur-sm"
             >
