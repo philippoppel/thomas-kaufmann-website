@@ -1,0 +1,14 @@
+# robots.txt for thomas-kaufmann.at
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.thomas-kaufmann.at/sitemap.xml
+
+# Disallow specific directories (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay (optional, adjust as needed)
+# Crawl-delay: 1
