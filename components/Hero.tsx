@@ -126,12 +126,12 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: duration.verySlow, ease: easing.apple }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-soft-lg">
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft-lg">
               <Image
                 src="/images/IMG_1186.JPG"
                 alt="Thomas Kaufmann - Psychotherapeut"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 priority
                 quality={90}
               />
