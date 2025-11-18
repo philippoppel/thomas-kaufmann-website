@@ -54,7 +54,7 @@ export default function Navigation() {
               className="flex items-center group"
             >
               <Image
-                src="/images/logo_transparent.png"
+                src="/images/logo.png"
                 alt="Thomas Kaufmann - Psychotherapeut"
                 width={400}
                 height={400}
