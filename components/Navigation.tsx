@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 const navItems = [
   { label: 'Start', href: '#hero' },
@@ -50,14 +51,16 @@ export default function Navigation() {
             <a
               href="#hero"
               onClick={(e) => handleNavClick(e, '#hero')}
-              className="flex flex-col leading-tight group"
+              className="flex items-center group"
             >
-              <span className="font-serif text-xl lg:text-2xl font-bold text-neutral-900 group-hover:text-accent-700 transition-colors duration-500 ease-out">
-                Thomas Kaufmann
-              </span>
-              <span className="text-xs text-neutral-500 tracking-wider uppercase">
-                Psychotherapie
-              </span>
+              <Image
+                src="/images/logo.png"
+                alt="Thomas Kaufmann - Psychotherapeut"
+                width={160}
+                height={60}
+                className="h-12 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                priority
+              />
             </a>
 
             {/* Desktop Nav */}
@@ -79,7 +82,7 @@ export default function Navigation() {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
-              className="hidden md:inline-flex items-center px-6 py-2.5 bg-neutral-900 text-white rounded-xl font-medium hover:bg-neutral-800 transition-all duration-500 ease-out hover:shadow-soft hover:scale-105"
+              className="hidden md:inline-flex items-center px-6 py-2.5 bg-primary-700 text-white rounded-xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out hover:shadow-soft hover:scale-105"
             >
               Termin
             </a>
@@ -149,12 +152,12 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-auto pt-8 border-t border-neutral-200"
+                className="mt-auto pt-8 border-t border-primary-200"
               >
                 <a
                   href="#contact"
                   onClick={(e) => handleNavClick(e, '#contact')}
-                  className="block w-full text-center px-8 py-4 bg-neutral-900 text-white rounded-2xl font-medium hover:bg-neutral-800 transition-all duration-500 ease-out hover:scale-[1.02]"
+                  className="block w-full text-center px-8 py-4 bg-primary-700 text-white rounded-2xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out hover:scale-[1.02]"
                 >
                   Termin vereinbaren
                 </a>
