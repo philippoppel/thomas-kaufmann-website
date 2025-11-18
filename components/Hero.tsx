@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { fadeInUp, fadeInScale, fadeIn, easing, duration } from '@/lib/animations'
-import SignatureLogo from './SignatureLogo'
 
 export default function Hero() {
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -23,16 +22,6 @@ export default function Hero() {
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           {/* Text Content */}
           <div className="lg:col-span-7 space-y-10">
-            {/* Signature Logo */}
-            <motion.div
-              initial={fadeIn.initial}
-              animate={fadeIn.animate}
-              transition={{ delay: 0, duration: duration.normal }}
-              className="w-64 md:w-72"
-            >
-              <SignatureLogo />
-            </motion.div>
-
             {/* Eyebrow */}
             <motion.div
               initial={fadeIn.initial}
