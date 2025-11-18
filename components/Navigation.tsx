@@ -54,11 +54,11 @@ export default function Navigation() {
               className="flex items-center group"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/logo-cropped.png"
                 alt="Thomas Kaufmann - Psychotherapeut"
-                width={280}
-                height={100}
-                className="h-16 lg:h-20 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                width={180}
+                height={120}
+                className="h-14 lg:h-16 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                 priority
               />
             </a>
