@@ -46,7 +46,7 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-52 lg:h-64">
             {/* Logo */}
             <a
               href="#hero"
@@ -56,9 +56,9 @@ export default function Navigation() {
               <Image
                 src="/images/transparent_logo.png"
                 alt="Thomas Kaufmann - Psychotherapeut"
-                width={200}
-                height={200}
-                className="h-16 lg:h-20 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                width={600}
+                height={600}
+                className="h-48 lg:h-60 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                 priority
               />
             </a>
@@ -123,7 +123,7 @@ export default function Navigation() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 bg-white md:hidden"
           >
-            <div className="pt-24 px-6 pb-6 h-full flex flex-col">
+            <div className="pt-56 px-6 pb-6 h-full flex flex-col">
               <ul className="flex flex-col gap-2">
                 {navItems.map((item, index) => (
                   <motion.li
