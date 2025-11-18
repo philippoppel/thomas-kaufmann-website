@@ -58,7 +58,7 @@ export default function Navigation() {
                 alt="Thomas Kaufmann - Psychotherapeut"
                 width={400}
                 height={400}
-                className="h-32 lg:h-36 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                className="h-32 lg:h-36 w-auto object-contain transition-all duration-500 ease-out group-hover:scale-105 sepia-[0.3] saturate-[1.2] brightness-[0.85] hue-rotate-[350deg] drop-shadow-sm group-hover:drop-shadow-md"
                 priority
               />
             </a>
