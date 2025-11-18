@@ -47,12 +47,15 @@ export default function Focus() {
           animate={isInView ? fadeInUp.animate : fadeInUp.initial}
           className="text-center space-y-6 mb-20"
         >
-          <p className="text-accent-600 text-sm font-medium uppercase tracking-wider">
+          <p className="text-primary-600 text-sm font-medium uppercase tracking-wider">
             Schwerpunkte
           </p>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
-            Wobei ich Sie unterstütze
+            <span className="relative inline-block">
+              Wobei ich Sie unterstütze
+              <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
+            </span>
           </h2>
 
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -71,10 +74,10 @@ export default function Focus() {
             <motion.div
               key={area.title}
               variants={staggerItem}
-              className="group relative bg-white rounded-3xl p-10 shadow-soft hover:shadow-soft-lg transition-all duration-300 ease-out border border-neutral-100 hover:-translate-y-1"
+              className="group relative bg-white rounded-3xl p-10 shadow-soft hover:shadow-soft-lg transition-all duration-500 ease-out border border-neutral-100 hover:-translate-y-2"
             >
               {/* Number */}
-              <div className="absolute top-8 right-8 text-7xl font-bold text-neutral-100 group-hover:text-accent-100 transition-colors duration-300">
+              <div className="absolute top-8 right-8 text-7xl font-bold text-neutral-100 group-hover:text-primary-100 transition-colors duration-500">
                 {area.number}
               </div>
 
@@ -88,8 +91,8 @@ export default function Focus() {
                   {area.description}
                 </p>
 
-                <div className="pt-6 mt-6 border-t border-neutral-200 group-hover:border-accent-200 transition-colors duration-300">
-                  <p className="text-sm text-accent-700 font-medium">
+                <div className="pt-6 mt-6 border-t border-neutral-200 group-hover:border-primary-300 transition-colors duration-500">
+                  <p className="text-sm text-primary-700 font-medium">
                     {area.methods}
                   </p>
                 </div>
@@ -105,11 +108,11 @@ export default function Focus() {
           transition={{ ...fadeInUp.transition, delay: 0.3 }}
           className="mt-20 text-center"
         >
-          <div className="inline-block bg-white rounded-2xl px-10 py-8 shadow-soft border border-neutral-100 max-w-2xl hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 ease-out">
+          <div className="inline-block bg-white rounded-2xl px-10 py-8 shadow-soft border border-primary-100 max-w-2xl hover:shadow-soft-lg hover:-translate-y-2 transition-all duration-500 ease-out">
             <p className="text-neutral-700 text-lg leading-relaxed">
               Sie sind sich nicht sicher, ob Ihr Anliegen hier aufgeführt ist?
               <br />
-              <span className="text-accent-700 font-medium">
+              <span className="text-primary-700 font-medium">
                 Kontaktieren Sie mich für ein unverbindliches Erstgespräch.
               </span>
             </p>

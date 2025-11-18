@@ -40,7 +40,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-32 px-6 lg:px-8 bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 relative overflow-hidden"
+      className="py-32 px-6 lg:px-8 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 relative overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -54,7 +54,7 @@ export default function Contact() {
           animate={isInView ? fadeInUp.animate : fadeInUp.initial}
           className="text-center space-y-8 mb-16"
         >
-          <p className="text-accent-200 text-sm font-medium uppercase tracking-wider">
+          <p className="text-primary-200 text-sm font-medium uppercase tracking-wider">
             Kontakt
           </p>
 
@@ -62,7 +62,7 @@ export default function Contact() {
             Bereit für den ersten Schritt?
           </h2>
 
-          <p className="text-xl text-accent-100 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-primary-100 max-w-2xl mx-auto leading-relaxed">
             Vereinbaren Sie ein unverbindliches Erstgespräch.
             Ich freue mich darauf, Sie kennenzulernen.
           </p>
@@ -84,10 +84,10 @@ export default function Contact() {
                 target={item.label === 'Praxisstandort' ? '_blank' : undefined}
                 rel={item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined}
                 variants={staggerItem}
-                className="group bg-white/95 backdrop-blur-sm rounded-2xl p-8 hover:bg-white transition-all duration-300 ease-out shadow-soft hover:shadow-soft-lg hover:-translate-y-1"
+                className="group bg-white/95 backdrop-blur-sm rounded-2xl p-8 hover:bg-white transition-all duration-500 ease-out shadow-soft hover:shadow-soft-lg hover:-translate-y-2"
               >
                 <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-accent-100 flex items-center justify-center text-accent-700 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 ease-out">
+                  <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 flex-shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -116,22 +116,22 @@ export default function Contact() {
           </h3>
           <div className="grid md:grid-cols-2 gap-8 text-white">
             <div>
-              <p className="text-accent-100 text-sm font-medium mb-2">Sitzungsdauer</p>
+              <p className="text-primary-100 text-sm font-medium mb-2">Sitzungsdauer</p>
               <p className="text-lg">50 Minuten</p>
             </div>
             <div>
-              <p className="text-accent-100 text-sm font-medium mb-2">Termine</p>
+              <p className="text-primary-100 text-sm font-medium mb-2">Termine</p>
               <p className="text-lg">Nach Vereinbarung</p>
             </div>
             <div className="md:col-span-2">
-              <p className="text-accent-100 text-sm font-medium mb-2">Kostenerstattung</p>
+              <p className="text-primary-100 text-sm font-medium mb-2">Kostenerstattung</p>
               <p className="leading-relaxed">
                 Gerne informiere ich Sie über mögliche Kostenzuschüsse durch Ihre Krankenkasse.
               </p>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-white/20 text-center">
-            <p className="text-sm text-accent-200">
+            <p className="text-sm text-primary-200">
               Psychotherapeut in Ausbildung unter Supervision gemäß § 27 PthG
             </p>
           </div>

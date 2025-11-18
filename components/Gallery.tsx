@@ -57,12 +57,15 @@ export default function Gallery() {
             animate={isInView ? fadeInUp.animate : fadeInUp.initial}
             className="text-center space-y-6 mb-16"
           >
-            <p className="text-accent-600 text-sm font-medium uppercase tracking-wider">
+            <p className="text-primary-600 text-sm font-medium uppercase tracking-wider">
               Eindrücke
             </p>
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
-              Atmosphäre & Umgebung
+              <span className="relative inline-block">
+                Atmosphäre & Umgebung
+                <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
+              </span>
             </h2>
 
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -82,19 +85,19 @@ export default function Gallery() {
                 key={index}
                 variants={staggerItem}
                 onClick={() => setSelectedImage(index)}
-                className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-300 ease-out hover:-translate-y-1"
+                className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-500 ease-out hover:-translate-y-2"
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                   placeholder="blur"
                   blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y1ZjNmMCIvPjwvc3ZnPg=="
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/0 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/0 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <p className="text-white text-sm font-medium">{image.category}</p>
                   </div>
@@ -112,15 +115,15 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 z-50 bg-neutral-900/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
           >
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="relative w-full max-w-6xl aspect-[4/3]"
               onClick={(e) => e.stopPropagation()}
             >
@@ -135,7 +138,7 @@ export default function Gallery() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-14 right-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 ease-out"
+                className="absolute -top-14 right-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 ease-out"
               >
                 <XIcon className="w-6 h-6" />
               </button>

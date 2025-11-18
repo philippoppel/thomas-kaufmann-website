@@ -37,20 +37,29 @@ export default function About() {
             animate={isInView ? fadeInUp.animate : fadeInUp.initial}
             className="max-w-3xl"
           >
-            <p className="text-accent-600 text-sm font-medium uppercase tracking-wider mb-6">
+            <p className="text-primary-600 text-sm font-medium uppercase tracking-wider mb-6">
               Über mich
             </p>
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
-              Klarheit in Krisenmomenten
+              <span className="relative inline-block">
+                Klarheit in Krisenmomenten
+                <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
+              </span>
             </h2>
 
             <div className="space-y-6 text-lg md:text-xl text-neutral-600 leading-relaxed">
               <p>
                 Als Psychotherapeut in Ausbildung unter Supervision verbinde ich fundierte{' '}
-                <span className="text-accent-700 font-medium">Verhaltenstherapie</span> mit meiner
-                langjährigen Erfahrung als{' '}
-                <span className="text-accent-700 font-medium">Notfallsanitäter</span>.
+                <span className="relative inline-block">
+                  <span className="text-primary-700 font-medium">Verhaltenstherapie</span>
+                  <span className="absolute -bottom-0.5 left-0 w-full h-1.5 bg-primary-200/70 -z-10" />
+                </span>{' '}
+                mit meiner langjährigen Erfahrung als{' '}
+                <span className="relative inline-block">
+                  <span className="text-primary-700 font-medium">Notfallsanitäter</span>
+                  <span className="absolute -bottom-0.5 left-0 w-full h-1.5 bg-primary-200/70 -z-10" />
+                </span>.
               </p>
 
               <p>
@@ -60,7 +69,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-neutral-200">
+            <div className="mt-8 pt-8 border-t border-primary-200">
               <p className="text-neutral-700">
                 Ausbildung an der <strong className="text-neutral-900">Sigmund Freud Universität Wien</strong>
                 {' · '}
@@ -82,8 +91,8 @@ export default function About() {
                 variants={staggerItem}
                 className="group"
               >
-                <div className="h-full p-8 rounded-2xl bg-primary-100/50 hover:bg-primary-100 transition-all duration-300 ease-out hover:-translate-y-1">
-                  <div className="w-12 h-1 bg-accent-600 rounded-full mb-6" />
+                <div className="h-full p-8 rounded-2xl bg-primary-100/50 hover:bg-primary-100 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-soft">
+                  <div className="w-12 h-1 bg-primary-500 rounded-full mb-6 transition-all duration-500 ease-out group-hover:w-16" />
                   <h3 className="text-xl font-semibold text-neutral-900 mb-3">
                     {feature.title}
                   </h3>
