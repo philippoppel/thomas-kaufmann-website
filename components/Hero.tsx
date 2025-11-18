@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center px-6 lg:px-8 pt-48 lg:pt-60 pb-20 bg-gradient-to-b from-primary-100 via-primary-50 to-white"
+      className="min-h-screen flex items-center justify-center px-6 lg:px-8 pt-32 lg:pt-36 pb-20 bg-gradient-to-b from-primary-100 via-primary-50 to-white"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
