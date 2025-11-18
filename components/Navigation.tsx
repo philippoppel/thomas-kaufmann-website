@@ -56,9 +56,9 @@ export default function Navigation() {
               <Image
                 src="/images/logo.png"
                 alt="Thomas Kaufmann - Psychotherapeut"
-                width={200}
-                height={75}
-                className="h-14 lg:h-16 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                width={280}
+                height={100}
+                className="h-16 lg:h-20 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                 priority
               />
             </a>
