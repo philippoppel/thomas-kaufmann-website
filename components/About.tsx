@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
+import { HospitalIcon, BrainIcon, GraduationIcon } from './Icons'
 
 const features = [
   {
@@ -20,9 +21,9 @@ const features = [
 ]
 
 const practiceLocations = [
-  { icon: '🏥', label: 'Kinder- & Jugendambulanz Wien' },
-  { icon: '🧠', label: 'Neuromed Campus Linz (inkl. Forensik)' },
-  { icon: '🎓', label: 'Universitätsambulanz SFU Linz' },
+  { icon: HospitalIcon, label: 'Kinder- & Jugendambulanz Wien' },
+  { icon: BrainIcon, label: 'Neuromed Campus Linz (inkl. Forensik)' },
+  { icon: GraduationIcon, label: 'Universitätsambulanz SFU Linz' },
 ]
 
 export default function About() {
@@ -123,15 +124,20 @@ export default function About() {
               Während meiner Ausbildung konnte ich in verschiedenen Praktika wertvolle Erfahrungen sammeln:
             </p>
             <div className="grid md:grid-cols-3 gap-6">
-              {practiceLocations.map((location) => (
-                <div
-                  key={location.label}
-                  className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-soft hover:-translate-y-1 transition-all duration-500"
-                >
-                  <span className="text-3xl mb-4 block">{location.icon}</span>
-                  <p className="font-medium text-neutral-900">{location.label}</p>
-                </div>
-              ))}
+              {practiceLocations.map((location) => {
+                const IconComponent = location.icon
+                return (
+                  <div
+                    key={location.label}
+                    className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-soft hover:-translate-y-1 transition-all duration-500"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 mb-4">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <p className="font-medium text-neutral-900">{location.label}</p>
+                  </div>
+                )
+              })}
             </div>
             <p className="text-lg text-neutral-600 leading-relaxed mt-8">
               Diese Einsätze gaben mir Einblick in ein breites Spektrum psychischer Probleme und unterschiedlicher
