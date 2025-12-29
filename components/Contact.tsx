@@ -95,8 +95,10 @@ export default function Contact() {
                     target: item.label === 'Praxisstandort' ? '_blank' : undefined,
                     rel: item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined,
                   } : {})}
-                  className={`group bg-white/95 backdrop-blur-sm rounded-2xl p-8 transition-all duration-500 ease-out shadow-soft ${
-                    isClickable ? 'hover:bg-white hover:shadow-soft-lg hover:-translate-y-2 cursor-pointer' : ''
+                  className={`group backdrop-blur-sm rounded-2xl p-8 transition-all duration-500 ease-out ${
+                    isClickable
+                      ? 'bg-white/95 shadow-soft hover:bg-white hover:shadow-soft-lg hover:-translate-y-2 cursor-pointer'
+                      : 'bg-white/60 border border-white/40'
                   }`}
                 >
                   <div className="flex items-start gap-5">
