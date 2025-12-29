@@ -1,12 +1,14 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="bg-neutral-900 text-neutral-300 py-16 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* About */}
           <div>
             <h4 className="font-serif text-2xl font-bold text-white mb-4">
@@ -50,6 +52,33 @@ export default function Footer() {
             </nav>
           </div>
 
+          {/* Legal Links */}
+          <div>
+            <h4 className="font-semibold text-white mb-4">
+              Rechtliches
+            </h4>
+            <nav className="space-y-3 text-sm">
+              <Link
+                href="/faq"
+                className="block text-neutral-400 hover:text-white transition-colors"
+              >
+                FAQ
+              </Link>
+              <Link
+                href="/impressum"
+                className="block text-neutral-400 hover:text-white transition-colors"
+              >
+                Impressum
+              </Link>
+              <Link
+                href="/impressum#datenschutz"
+                className="block text-neutral-400 hover:text-white transition-colors"
+              >
+                Datenschutz
+              </Link>
+            </nav>
+          </div>
+
           {/* Contact Info */}
           <div>
             <h4 className="font-semibold text-white mb-4">
@@ -58,24 +87,24 @@ export default function Footer() {
             <div className="space-y-3 text-sm">
               <p>
                 <a
-                  href="mailto:office@thomas-kaufmann.at"
+                  href="mailto:praxis@thomas-kaufmann.at"
                   className="text-neutral-400 hover:text-white transition-colors"
                 >
-                  office@thomas-kaufmann.at
+                  praxis@thomas-kaufmann.at
                 </a>
               </p>
               <p>
                 <a
-                  href="tel:+436506015855"
+                  href="mailto:termin@thomas-kaufmann.at"
                   className="text-neutral-400 hover:text-white transition-colors"
                 >
-                  +43 650 601 5855
+                  termin@thomas-kaufmann.at
                 </a>
               </p>
               <p className="text-neutral-500 pt-2">
-                Erlbachweg 28
+                Domgasse 14
                 <br />
-                4060 Leonding
+                4020 Linz
               </p>
             </div>
           </div>

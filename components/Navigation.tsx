@@ -3,18 +3,23 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navItems = [
   { label: 'Start', href: '#hero' },
   { label: 'Über mich', href: '#about' },
   { label: 'Schwerpunkte', href: '#focus' },
-  { label: 'Galerie', href: '#gallery' },
+  { label: 'Methoden', href: '#methods' },
+  { label: 'Erstgespräch', href: '#firstsession' },
   { label: 'Kontakt', href: '#contact' },
 ]
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,12 +30,23 @@ export default function Navigation() {
   }, [])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!isHomePage) {
+      // If not on home page, navigate to home page with hash
+      return
+    }
     e.preventDefault()
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
       setIsMobileMenuOpen(false)
     }
+  }
+
+  const getHref = (href: string) => {
+    if (!isHomePage) {
+      return `/${href}`
+    }
+    return href
   }
 
   return (
@@ -48,9 +64,8 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-28 lg:h-32">
             {/* Logo */}
-            <a
-              href="#hero"
-              onClick={(e) => handleNavClick(e, '#hero')}
+            <Link
+              href="/"
               className="flex items-center group"
             >
               <Image
@@ -61,14 +76,14 @@ export default function Navigation() {
                 className="h-32 lg:h-36 w-auto object-contain transition-all duration-700 ease-out group-hover:scale-105 sepia-[0.3] saturate-[1.2] brightness-[0.85] hue-rotate-[350deg] drop-shadow-sm group-hover:drop-shadow-md"
                 priority
               />
-            </a>
+            </Link>
 
             {/* Desktop Nav */}
-            <ul className="hidden md:flex items-center gap-1">
+            <ul className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
-                    href={item.href}
+                    href={getHref(item.href)}
                     onClick={(e) => handleNavClick(e, item.href)}
                     className="px-4 py-2 text-neutral-700 hover:text-neutral-900 transition-all duration-500 ease-out font-medium relative group rounded-xl hover:bg-neutral-100"
                   >
@@ -80,9 +95,9 @@ export default function Navigation() {
 
             {/* CTA Button */}
             <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
-              className="hidden md:inline-flex items-center px-6 py-2.5 bg-primary-700 text-white rounded-xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out hover:shadow-soft"
+              href={isHomePage ? '#contact' : '/#contact'}
+              onClick={(e) => isHomePage && handleNavClick(e, '#contact')}
+              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-primary-700 text-white rounded-xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out hover:shadow-soft"
             >
               Termin
             </a>
@@ -90,7 +105,7 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-neutral-100 transition-all duration-300 ease-out"
+              className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-neutral-100 transition-all duration-300 ease-out"
               aria-label="Menu"
             >
               <span
@@ -121,7 +136,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-white md:hidden"
+            className="fixed inset-0 z-40 bg-white lg:hidden"
           >
             <div className="pt-32 px-6 pb-6 h-full flex flex-col">
               <ul className="flex flex-col gap-2">
@@ -138,7 +153,7 @@ export default function Navigation() {
                     }}
                   >
                     <a
-                      href={item.href}
+                      href={getHref(item.href)}
                       onClick={(e) => handleNavClick(e, item.href)}
                       className="block text-2xl font-semibold text-neutral-900 hover:text-accent-700 transition-all duration-500 ease-out py-3 hover:translate-x-3"
                     >
@@ -148,6 +163,29 @@ export default function Navigation() {
                 ))}
               </ul>
 
+              {/* Mobile FAQ & Impressum Links */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-8 pt-8 border-t border-primary-200 flex gap-6"
+              >
+                <Link
+                  href="/faq"
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  FAQ
+                </Link>
+                <Link
+                  href="/impressum"
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Impressum
+                </Link>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -155,8 +193,14 @@ export default function Navigation() {
                 className="mt-auto pt-8 border-t border-primary-200"
               >
                 <a
-                  href="#contact"
-                  onClick={(e) => handleNavClick(e, '#contact')}
+                  href={isHomePage ? '#contact' : '/#contact'}
+                  onClick={(e) => {
+                    if (isHomePage) {
+                      handleNavClick(e, '#contact')
+                    } else {
+                      setIsMobileMenuOpen(false)
+                    }
+                  }}
                   className="block w-full text-center px-8 py-4 bg-primary-700 text-white rounded-2xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out"
                 >
                   Termin vereinbaren

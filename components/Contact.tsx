@@ -9,8 +9,8 @@ const contactInfo = [
   {
     icon: MailIcon,
     label: 'E-Mail Allgemein',
-    value: 'office@thomas-kaufmann.at',
-    href: 'mailto:office@thomas-kaufmann.at',
+    value: 'praxis@thomas-kaufmann.at',
+    href: 'mailto:praxis@thomas-kaufmann.at',
   },
   {
     icon: CalendarIcon,
@@ -21,15 +21,22 @@ const contactInfo = [
   {
     icon: PhoneIcon,
     label: 'Telefon',
-    value: '+43 650 601 5855',
-    href: 'tel:+436506015855',
+    value: 'wird in Kürze bekanntgegeben',
+    href: null,
   },
   {
     icon: MapPinIcon,
     label: 'Praxisstandort',
-    value: 'Erlbachweg 28, 4060 Leonding',
-    href: 'https://maps.google.com/?q=Erlbachweg+28,+4060+Leonding',
+    value: 'Domgasse 14, 4020 Linz',
+    href: 'https://maps.google.com/?q=Domgasse+14,+4020+Linz',
   },
+]
+
+const pricing = [
+  { label: 'Einzelgespräch', duration: '50 Min.', price: '€ 80' },
+  { label: 'Einzelgespräch', duration: '100 Min.', price: '€ 160' },
+  { label: 'Paar-/Gruppengespräch', duration: '80 Min.', price: '€ 160' },
+  { label: 'Beratung für Unternehmen', duration: '50 Min.', price: '€ 150*' },
 ]
 
 export default function Contact() {
@@ -77,31 +84,71 @@ export default function Contact() {
         >
           {contactInfo.map((item) => {
             const IconComponent = item.icon
+            const isClickable = item.href !== null
+            const Component = isClickable ? 'a' : 'div'
+
             return (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                target={item.label === 'Praxisstandort' ? '_blank' : undefined}
-                rel={item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined}
-                variants={staggerItem}
-                className="group bg-white/95 backdrop-blur-sm rounded-2xl p-8 hover:bg-white transition-all duration-500 ease-out shadow-soft hover:shadow-soft-lg hover:-translate-y-2"
-              >
-                <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 flex-shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
-                    <IconComponent className="w-6 h-6" />
+              <motion.div key={item.label} variants={staggerItem}>
+                <Component
+                  {...(isClickable ? {
+                    href: item.href,
+                    target: item.label === 'Praxisstandort' ? '_blank' : undefined,
+                    rel: item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined,
+                  } : {})}
+                  className={`group bg-white/95 backdrop-blur-sm rounded-2xl p-8 transition-all duration-500 ease-out shadow-soft ${
+                    isClickable ? 'hover:bg-white hover:shadow-soft-lg hover:-translate-y-2 cursor-pointer' : ''
+                  }`}
+                >
+                  <div className="flex items-start gap-5">
+                    <div className={`w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 flex-shrink-0 transition-transform duration-500 ease-out ${
+                      isClickable ? 'group-hover:scale-110' : ''
+                    }`}>
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-neutral-500 font-medium mb-2">
+                        {item.label}
+                      </p>
+                      <p className={`text-lg font-semibold break-words ${
+                        item.href === null ? 'text-neutral-500 italic' : 'text-neutral-900'
+                      }`}>
+                        {item.value}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-neutral-500 font-medium mb-2">
-                      {item.label}
-                    </p>
-                    <p className="text-lg font-semibold text-neutral-900 break-words">
-                      {item.value}
-                    </p>
-                  </div>
-                </div>
-              </motion.a>
+                </Component>
+              </motion.div>
             )
           })}
+        </motion.div>
+
+        {/* Pricing Table */}
+        <motion.div
+          {...fadeInUp}
+          animate={isInView ? fadeInUp.animate : fadeInUp.initial}
+          transition={{ ...fadeInUp.transition, delay: 0.2 }}
+          className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20 mb-8"
+        >
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">
+            Preise
+          </h3>
+          <div className="grid gap-4">
+            {pricing.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-4 border-b border-white/10 last:border-0"
+              >
+                <div className="flex-1">
+                  <p className="text-white font-medium">{item.label}</p>
+                  <p className="text-primary-200 text-sm">{item.duration}</p>
+                </div>
+                <p className="text-2xl font-bold text-white">{item.price}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-primary-200 mt-6 text-center">
+            * Preise exkl. USt. · Psychotherapeutische Einheiten sind nach § 6 UStG umsatzsteuerbefreit.
+          </p>
         </motion.div>
 
         {/* Additional Info */}
@@ -117,16 +164,25 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-8 text-white">
             <div>
               <p className="text-primary-100 text-sm font-medium mb-2">Sitzungsdauer</p>
-              <p className="text-lg">50 Minuten</p>
+              <p className="text-lg">50 Minuten (therapeutische Stunde)</p>
             </div>
             <div>
               <p className="text-primary-100 text-sm font-medium mb-2">Termine</p>
               <p className="text-lg">Nach Vereinbarung</p>
             </div>
+            <div>
+              <p className="text-primary-100 text-sm font-medium mb-2">Standort</p>
+              <p className="text-lg">Domgasse 14, 4020 Linz (2. Stock, Lift vorhanden)</p>
+            </div>
+            <div>
+              <p className="text-primary-100 text-sm font-medium mb-2">Online-Therapie</p>
+              <p className="text-lg">Videositzungen möglich</p>
+            </div>
             <div className="md:col-span-2">
               <p className="text-primary-100 text-sm font-medium mb-2">Kostenerstattung</p>
               <p className="leading-relaxed">
-                Gerne informiere ich Sie über mögliche Kostenzuschüsse durch Ihre Krankenkasse.
+                Als Psychotherapeut in Ausbildung unter Supervision ist derzeit keine Krankenkassen-Refundierung möglich.
+                Gerne informiere ich Sie über mögliche Kostenzuschüsse durch private Zusatzversicherungen.
               </p>
             </div>
           </div>

@@ -10,15 +10,44 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Thomas Kaufmann - Psychotherapie Linz | Verhaltenstherapie',
-  description: 'Psychotherapeut in Ausbildung unter Supervision in Linz. Verhaltenstherapie mit Spezialgebiet Krisenintervention.',
-  keywords: ['Psychotherapie', 'Verhaltenstherapie', 'Linz', 'Krisenintervention', 'Thomas Kaufmann'],
+  title: 'Thomas Kaufmann, BA pth. – Psychotherapeut in Linz | Verhaltenstherapie',
+  description: 'Psychotherapeut in Ausbildung unter Supervision in Linz. Verhaltenstherapie mit Schwerpunkt Krisenintervention. Praxis in der Domgasse 14, 4020 Linz. Auch Online-Therapie möglich.',
+  keywords: ['Psychotherapie', 'Verhaltenstherapie', 'Linz', 'Krisenintervention', 'Thomas Kaufmann', 'Psychotherapeut', 'Angst', 'Depression', 'Burnout', 'Paartherapie'],
   authors: [{ name: 'Thomas Kaufmann' }],
+  creator: 'Thomas Kaufmann',
+  publisher: 'Thomas Kaufmann',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://thomas-kaufmann.at'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Thomas Kaufmann - Psychotherapie Linz',
-    description: 'Professionelle psychotherapeutische Unterstützung in Linz',
+    title: 'Thomas Kaufmann, BA pth. – Psychotherapeut in Linz',
+    description: 'Verhaltenstherapie & Krisenintervention in Linz. Im Hier und Jetzt an konkreten Lösungen arbeiten.',
     type: 'website',
     locale: 'de_AT',
+    url: 'https://thomas-kaufmann.at',
+    siteName: 'Thomas Kaufmann - Psychotherapie',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Thomas Kaufmann, BA pth. – Psychotherapeut in Linz',
+    description: 'Verhaltenstherapie & Krisenintervention in Linz. Im Hier und Jetzt an konkreten Lösungen arbeiten.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 

@@ -6,29 +6,46 @@ import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/ani
 
 const focusAreas = [
   {
-    title: 'Angst & Panik',
-    description: 'Werkzeuge gegen Angstkreisläufe. Verstehen, beruhigen, Vertrauen aufbauen.',
-    methods: 'Expositionstherapie · Entspannungstechniken',
+    title: 'Angststörungen & Panik',
+    description: 'Ständige Sorgen, Phobien, Panikattacken – wir entwickeln Werkzeuge gegen Angstkreisläufe und bauen Vertrauen auf.',
     number: '01',
   },
   {
     title: 'Depression & Stimmung',
-    description: 'Aktivierung, Struktur und neue Perspektiven für mehr Lebensqualität.',
-    methods: 'Verhaltensaktivierung · Kognitive Therapie',
+    description: 'Antriebslosigkeit, Niedergeschlagenheit, Hoffnungslosigkeit – gemeinsam aktivieren wir neue Perspektiven und Lebensqualität.',
     number: '02',
   },
   {
     title: 'Stress & Burnout',
-    description: 'Grenzen setzen, Belastungen reduzieren, nachhaltige Resilienz entwickeln.',
-    methods: 'Stressmanagement · Selbstfürsorge',
+    description: 'Überforderung im Beruf oder Alltag, Erschöpfungszustände – wir lernen Grenzen zu setzen und nachhaltige Resilienz zu entwickeln.',
     number: '03',
   },
   {
-    title: 'Krisenintervention',
-    description: 'Akute Unterstützung bei Verlust, Trauma oder plötzlichen Veränderungen.',
-    methods: 'Stabilisierung · Traumafokussierte VT',
+    title: 'Trauma & Krisen',
+    description: 'Bewältigung von Schicksalsschlägen, Verlust, Unfall oder Krankheit – professionelle Stabilisierung und Begleitung.',
     number: '04',
   },
+  {
+    title: 'Selbstwert & Identität',
+    description: 'Selbstunsicherheit, Identitätsfindung, persönliche Weiterentwicklung – stärken Sie Ihr Selbstbewusstsein.',
+    number: '05',
+  },
+  {
+    title: 'Beziehung & Familie',
+    description: 'Paar- und Ehekonflikte, Kommunikationsschwierigkeiten, familiäre Krisen – verbessern Sie Ihre Beziehungen.',
+    number: '06',
+  },
+  {
+    title: 'Psychosomatik',
+    description: 'Körperliche Symptome ohne organische Ursache, die mit seelischem Stress zusammenhängen – verstehen Sie die Verbindung.',
+    number: '07',
+  },
+]
+
+const targetGroups = [
+  { label: 'Jugendliche', description: 'Ab 14 Jahren' },
+  { label: 'Erwachsene', description: 'Einzeltherapie' },
+  { label: 'Paare', description: 'Paartherapie' },
 ]
 
 export default function Focus() {
@@ -45,10 +62,10 @@ export default function Focus() {
         <motion.div
           {...fadeInUp}
           animate={isInView ? fadeInUp.animate : fadeInUp.initial}
-          className="text-center space-y-6 mb-20"
+          className="text-center space-y-6 mb-12"
         >
           <p className="text-primary-600 text-sm font-medium uppercase tracking-wider">
-            Schwerpunkte
+            Therapieangebot & Schwerpunkte
           </p>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
@@ -58,9 +75,28 @@ export default function Focus() {
             </span>
           </h2>
 
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            Evidenzbasierte Verhaltenstherapie für Ihre individuellen Herausforderungen
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+            Ich biete Psychotherapie für Jugendliche, Erwachsene sowie Paare an.
+            Wichtig ist mir, Ihnen mit meinem vielfältigen Hintergrund fundiert und individuell zur Seite zu stehen.
           </p>
+        </motion.div>
+
+        {/* Target Groups */}
+        <motion.div
+          {...fadeInUp}
+          animate={isInView ? fadeInUp.animate : fadeInUp.initial}
+          transition={{ ...fadeInUp.transition, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-4 mb-16"
+        >
+          {targetGroups.map((group) => (
+            <div
+              key={group.label}
+              className="bg-white rounded-full px-6 py-3 shadow-soft border border-primary-100"
+            >
+              <span className="font-medium text-neutral-900">{group.label}</span>
+              <span className="text-neutral-500 ml-2">· {group.description}</span>
+            </div>
+          ))}
         </motion.div>
 
         {/* Cards Grid with Stagger Animation */}
@@ -68,34 +104,28 @@ export default function Focus() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {focusAreas.map((area) => (
             <motion.div
               key={area.title}
               variants={staggerItem}
-              className="group relative bg-white rounded-3xl p-10 shadow-soft hover:shadow-soft-lg transition-all duration-500 ease-out border border-neutral-100 hover:-translate-y-2"
+              className="group relative bg-white rounded-2xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-500 ease-out border border-neutral-100 hover:-translate-y-2"
             >
               {/* Number */}
-              <div className="absolute top-8 right-8 text-7xl font-bold text-neutral-100 group-hover:text-primary-100 transition-colors duration-500">
+              <div className="absolute top-6 right-6 text-5xl font-bold text-neutral-100 group-hover:text-primary-100 transition-colors duration-500">
                 {area.number}
               </div>
 
               {/* Content */}
-              <div className="relative space-y-4">
-                <h3 className="text-2xl lg:text-3xl font-bold text-neutral-900">
+              <div className="relative space-y-3">
+                <h3 className="text-xl font-bold text-neutral-900 pr-12">
                   {area.title}
                 </h3>
 
-                <p className="text-lg text-neutral-600 leading-relaxed">
+                <p className="text-neutral-600 leading-relaxed">
                   {area.description}
                 </p>
-
-                <div className="pt-6 mt-6 border-t border-neutral-200 group-hover:border-primary-300 transition-colors duration-500">
-                  <p className="text-sm text-primary-700 font-medium">
-                    {area.methods}
-                  </p>
-                </div>
               </div>
             </motion.div>
           ))}
@@ -106,17 +136,39 @@ export default function Focus() {
           {...fadeInUp}
           animate={isInView ? fadeInUp.animate : fadeInUp.initial}
           transition={{ ...fadeInUp.transition, delay: 0.3 }}
-          className="mt-20 text-center"
+          className="mt-16 text-center"
         >
-          <div className="inline-block bg-white rounded-2xl px-10 py-8 shadow-soft border border-primary-100 max-w-2xl hover:shadow-soft-lg hover:-translate-y-2 transition-all duration-500 ease-out">
+          <div className="inline-block bg-white rounded-2xl px-10 py-8 shadow-soft border border-primary-100 max-w-3xl hover:shadow-soft-lg hover:-translate-y-2 transition-all duration-500 ease-out">
             <p className="text-neutral-700 text-lg leading-relaxed">
-              Sie sind sich nicht sicher, ob Ihr Anliegen hier aufgeführt ist?
-              <br />
+              Dies sind lediglich Beispiele – oft überschneiden sich Problembereiche auch oder lassen sich gar nicht exakt benennen.
+              <br className="hidden md:block" />
               <span className="text-primary-700 font-medium">
-                Kontaktieren Sie mich für ein unverbindliches Erstgespräch.
+                Entscheidend ist: Ihr individuelles Anliegen steht im Mittelpunkt.
               </span>
             </p>
           </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          {...fadeInUp}
+          animate={isInView ? fadeInUp.animate : fadeInUp.initial}
+          transition={{ ...fadeInUp.transition, delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary-700 text-white rounded-2xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out hover:shadow-soft-lg hover:-translate-y-1"
+          >
+            Unverbindliches Erstgespräch vereinbaren
+            <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>

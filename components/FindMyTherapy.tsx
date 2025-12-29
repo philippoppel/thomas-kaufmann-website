@@ -6,16 +6,16 @@ import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/ani
 
 const features = [
   {
-    title: 'Therapeuten-Netzwerk',
-    description: 'Über 5.000 verifizierte Therapeuten in ganz Österreich',
+    title: 'Gezielte Suche',
+    description: 'Filtern Sie nach Standort, Therapieverfahren, Schwerpunkten, Sprache und Verfügbarkeit.',
   },
   {
-    title: 'Kostenloses Wissen',
-    description: 'Fachbeiträge und Ratgeber zu psychischer Gesundheit',
+    title: 'Matching-Algorithmus',
+    description: 'Speziell entwickelt, um die maßgeschneiderte Therapie für Ihre Bedürfnisse zu finden.',
   },
   {
     title: 'DSGVO-konform',
-    description: 'Höchste Datenschutzstandards für Ihre sensiblen Daten',
+    description: 'Höchste Datenschutzstandards für Ihre sensiblen Daten – sicher und vertrauenswürdig.',
   },
 ]
 
@@ -38,7 +38,7 @@ export default function FindMyTherapy() {
             className="max-w-3xl"
           >
             <p className="text-primary-600 text-sm font-medium uppercase tracking-wider mb-6">
-              Founder
+              Mitgründer
             </p>
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
@@ -50,7 +50,6 @@ export default function FindMyTherapy() {
 
             <div className="space-y-6 text-lg md:text-xl text-neutral-600 leading-relaxed">
               <p>
-                Als Founder von{' '}
                 <a
                   href="https://findmytherapy.net"
                   target="_blank"
@@ -62,21 +61,27 @@ export default function FindMyTherapy() {
                   </span>
                   <span className="absolute -bottom-0.5 left-0 w-full h-1.5 bg-primary-200/70 -z-10" />
                 </a>{' '}
-                arbeite ich daran, den Zugang zu psychotherapeutischer Versorgung in Österreich zu verbessern.
+                ist eine von mir mitgegründete Online-Plattform, die Menschen dabei hilft, schnell und
+                unkompliziert passende Psychotherapieangebote zu finden. Im Jahr 2025 habe ich gemeinsam
+                mit einem kleinen Team dieses Herzensprojekt ins Leben gerufen.
               </p>
 
               <p>
-                Die Plattform verbindet Menschen mit verifizierten Psychotherapeuten und bietet{' '}
+                Der Anstoß dafür war meine Beobachtung, dass viele Hilfesuchende enorme Schwierigkeiten haben,
+                die passende Psychotherapie zu finden – oft sind Telefonate und Recherchen über Wochen nötig.
+                Gleichzeitig gibt es Therapeut:innen, die freie Kapazitäten haben, aber schwer gefunden werden.
+                <strong className="text-neutral-900"> Hier setzt FindMyTherapy an.</strong>
+              </p>
+
+              <p>
+                Als Mitgründer bringe ich vor allem mein{' '}
                 <span className="relative inline-block">
-                  <span className="text-primary-700 font-medium">kostenloses Expertenwissen</span>
+                  <span className="text-primary-700 font-medium">fachliches Know-how</span>
                   <span className="absolute -bottom-0.5 left-0 w-full h-1.5 bg-primary-200/70 -z-10" />
                 </span>{' '}
-                zu psychischer Gesundheit – von Panikattacken über Stress bis hin zu Burnout.
-              </p>
-
-              <p>
-                Als klinischer Experte im Gründungsteam bringe ich meine Erfahrung aus Verhaltenstherapie
-                und Krisenintervention ein, um eine Plattform zu schaffen, die wirklich hilft.
+                aus der Verhaltenstherapie und Krisenintervention ein. Ich wirke an der konzeptionellen
+                Gestaltung der Plattform mit und achte darauf, dass sie den hohen Anforderungen an
+                Datenschutz und Verschwiegenheit im psychotherapeutischen Kontext gerecht wird.
               </p>
             </div>
 

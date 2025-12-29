@@ -1,9 +1,11 @@
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
-import FindMyTherapy from '@/components/FindMyTherapy'
 import Focus from '@/components/Focus'
-import Gallery from '@/components/Gallery'
+import Methods from '@/components/Methods'
+import FirstSession from '@/components/FirstSession'
+import FindMyTherapy from '@/components/FindMyTherapy'
+import Map from '@/components/Map'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
@@ -14,9 +16,11 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <FindMyTherapy />
         <Focus />
-        <Gallery />
+        <Methods />
+        <FirstSession />
+        <FindMyTherapy />
+        <Map />
         <Contact />
       </main>
       <Footer />

@@ -31,7 +31,7 @@ export default function Hero() {
             >
               <div className="w-2 h-2 bg-primary-600 rounded-full animate-pulse" />
               <span className="text-primary-800 text-sm font-medium tracking-wide">
-                Psychotherapie in Linz
+                Praxis in Linz · auch Online
               </span>
             </motion.div>
 
@@ -59,21 +59,21 @@ export default function Hero() {
               </motion.p>
             </div>
 
-            {/* Subheading */}
+            {/* Subheading - Updated with new text */}
             <motion.p
               initial={fadeInUp.initial}
               animate={fadeInUp.animate}
               transition={{ delay: 0.7, duration: duration.slow, ease: easing.apple }}
               className="text-2xl md:text-3xl lg:text-4xl text-neutral-700 font-light leading-snug max-w-2xl text-balance"
             >
-              Professionelle Begleitung in Phasen der Veränderung durch{' '}
+              Im Hier und Jetzt an{' '}
               <span className="relative inline-block">
-                <span className="text-primary-700 font-normal">Verhaltenstherapie</span>
+                <span className="text-primary-700 font-normal">konkreten Lösungen</span>
                 <span className="absolute -bottom-1 left-0 w-full h-2 bg-primary-200/60 -z-10 transform -skew-x-2" />
               </span>{' '}
-              und{' '}
+              arbeiten – mit{' '}
               <span className="relative inline-block">
-                <span className="text-primary-700 font-normal">Krisenintervention</span>
+                <span className="text-primary-700 font-normal">Verhaltenstherapie</span>
                 <span className="absolute -bottom-1 left-0 w-full h-2 bg-primary-200/60 -z-10 transform -skew-x-2" />
               </span>.
             </motion.p>
@@ -156,9 +156,9 @@ export default function Hero() {
               transition={{ delay: 1.0, duration: duration.slow, ease: easing.apple }}
               className="absolute -bottom-6 -left-6 right-6 lg:right-auto lg:w-auto bg-white rounded-2xl shadow-soft-lg p-6 backdrop-blur-sm border-l-4 border-primary-400"
             >
-              <p className="text-sm text-neutral-600 mb-1">Schwerpunkt</p>
+              <p className="text-sm text-neutral-600 mb-1">Praxis</p>
               <p className="font-semibold text-neutral-900">
-                Krisenintervention & Verhaltenstherapie
+                Domgasse 14, 4020 Linz
               </p>
             </motion.div>
           </motion.div>
