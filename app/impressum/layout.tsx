@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Impressum & Datenschutz | Thomas Kaufmann Psychotherapie',
     description: 'Rechtliche Informationen und Datenschutzerklärung.',
-    url: 'https://thomas-kaufmann.at/impressum',
+    url: 'https://thomaskaufmann.vercel.app/impressum',
   },
   alternates: {
     canonical: '/impressum',

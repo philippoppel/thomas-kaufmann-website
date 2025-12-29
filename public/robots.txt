@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thomas-kaufmann.at/sitemap.xml
+Sitemap: https://thomaskaufmann.vercel.app/sitemap.xml

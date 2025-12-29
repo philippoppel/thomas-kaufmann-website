@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 
-const baseUrl = 'https://thomas-kaufmann.at'
+// TODO: Change to 'https://thomas-kaufmann.at' when custom domain is configured
+const baseUrl = 'https://thomaskaufmann.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

@@ -9,7 +9,8 @@ const playfair = Playfair_Display({
   weight: ['600', '700']
 })
 
-const siteUrl = 'https://thomas-kaufmann.at'
+// TODO: Change to 'https://thomas-kaufmann.at' when custom domain is configured
+const siteUrl = 'https://thomaskaufmann.vercel.app'
 
 export const metadata: Metadata = {
   title: {

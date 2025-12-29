@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'FAQ - Häufige Fragen | Thomas Kaufmann Psychotherapie',
     description: 'Antworten auf häufige Fragen zu Psychotherapie, Kosten, Ablauf und Schweigepflicht.',
-    url: 'https://thomas-kaufmann.at/faq',
+    url: 'https://thomaskaufmann.vercel.app/faq',
   },
   alternates: {
     canonical: '/faq',
