@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { MailIcon, CalendarIcon, PhoneIcon, MapPinIcon } from './Icons'
-import { fadeInUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
+import { fadeInUp, viewportOnce } from '@/lib/animations'
 
 const contactInfo = [
   {
@@ -75,54 +75,64 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* Contact Cards with Stagger Animation */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
-          className="grid sm:grid-cols-2 gap-6 mb-16"
-        >
-          {contactInfo.map((item) => {
+        {/* Contact Cards */}
+        <div className="grid sm:grid-cols-2 gap-6 mb-16">
+          {contactInfo.map((item, index) => {
             const IconComponent = item.icon
             const isClickable = item.href !== null
-            const Component = isClickable ? 'a' : 'div'
 
-            return (
-              <motion.div key={item.label} variants={staggerItem}>
-                <Component
-                  {...(isClickable ? {
-                    href: item.href,
-                    target: item.label === 'Praxisstandort' ? '_blank' : undefined,
-                    rel: item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined,
-                  } : {})}
-                  className={`group backdrop-blur-sm rounded-2xl p-8 transition-all duration-500 ease-out ${
-                    isClickable
-                      ? 'bg-white/95 shadow-soft hover:bg-white hover:shadow-soft-lg hover:-translate-y-2 cursor-pointer'
-                      : 'bg-white/60 border border-white/40'
-                  }`}
-                >
-                  <div className="flex items-start gap-5">
-                    <div className={`w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 flex-shrink-0 transition-transform duration-500 ease-out ${
-                      isClickable ? 'group-hover:scale-110' : ''
-                    }`}>
-                      <IconComponent className="w-6 h-6" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm text-neutral-500 font-medium mb-2">
-                        {item.label}
-                      </p>
-                      <p className={`text-lg font-semibold break-words ${
-                        item.href === null ? 'text-neutral-500 italic' : 'text-neutral-900'
-                      }`}>
-                        {item.value}
-                      </p>
-                    </div>
-                  </div>
-                </Component>
+            const cardContent = (
+              <div className="flex items-start gap-5">
+                <div className={`w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 flex-shrink-0 transition-transform duration-500 ease-out ${
+                  isClickable ? 'group-hover:scale-110' : ''
+                }`}>
+                  <IconComponent className="w-6 h-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm text-neutral-500 font-medium mb-2">
+                    {item.label}
+                  </p>
+                  <p className={`text-lg font-semibold break-words ${
+                    isClickable ? 'text-neutral-900' : 'text-neutral-500 italic'
+                  }`}>
+                    {item.value}
+                  </p>
+                </div>
+              </div>
+            )
+
+            const cardClasses = `group block rounded-2xl p-8 transition-all duration-500 ease-out ${
+              isClickable
+                ? 'bg-white shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer'
+                : 'bg-white/70 border border-white/50'
+            }`
+
+            return isClickable ? (
+              <motion.a
+                key={item.label}
+                href={item.href!}
+                target={item.label === 'Praxisstandort' ? '_blank' : undefined}
+                rel={item.label === 'Praxisstandort' ? 'noopener noreferrer' : undefined}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={cardClasses}
+              >
+                {cardContent}
+              </motion.a>
+            ) : (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={cardClasses}
+              >
+                {cardContent}
               </motion.div>
             )
           })}
-        </motion.div>
+        </div>
 
         {/* Pricing Table */}
         <motion.div
