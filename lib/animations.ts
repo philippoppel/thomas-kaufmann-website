@@ -92,8 +92,8 @@ export const staggerItem = {
 // Viewport animation hook settings
 export const viewportOnce = {
   once: true,
-  margin: "-80px",
-  amount: 0.15,
+  margin: "0px",
+  amount: 0.05,
 } as const
 
 export const viewportMultiple = {

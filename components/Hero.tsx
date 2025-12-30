@@ -16,12 +16,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-36 pb-12 sm:pb-20 bg-gradient-to-b from-primary-100 via-primary-50 to-white"
+      className="min-h-[auto] lg:min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-36 pb-12 sm:pb-20 bg-gradient-to-b from-primary-100 via-primary-50 to-white"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Text Content */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 lg:space-y-10">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 lg:space-y-10 order-2 lg:order-1">
             {/* Eyebrow */}
             <motion.div
               initial={fadeIn.initial}
@@ -134,7 +134,7 @@ export default function Hero() {
             initial={fadeInScale.initial}
             animate={fadeInScale.animate}
             transition={{ delay: 0.5, duration: duration.verySlow, ease: easing.apple }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5 relative order-1 lg:order-2"
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft-lg">
               <Image
