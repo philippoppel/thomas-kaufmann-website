@@ -34,10 +34,10 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-32 px-6 lg:px-8 bg-white"
+      className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="space-y-20">
+        <div className="space-y-12 sm:space-y-16 lg:space-y-20">
           {/* Header */}
           <motion.div
             {...fadeInUp}

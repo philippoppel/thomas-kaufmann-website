@@ -47,7 +47,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-32 px-6 lg:px-8 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 relative overflow-hidden"
+      className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 relative overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">

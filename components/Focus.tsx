@@ -56,7 +56,7 @@ export default function Focus() {
     <section
       id="focus"
       ref={ref}
-      className="py-32 px-6 lg:px-8 bg-gradient-to-b from-white to-primary-50"
+      className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-primary-50"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -68,14 +68,14 @@ export default function Focus() {
             Therapieangebot & Schwerpunkte
           </p>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
             <span className="relative inline-block">
               Wobei ich Sie unterstütze
               <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
             </span>
           </h2>
 
-          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-3xl mx-auto">
             Ich biete Psychotherapie für Jugendliche, Erwachsene sowie Paare an.
             Wichtig ist mir, Ihnen mit meinem vielfältigen Hintergrund fundiert und individuell zur Seite zu stehen.
           </p>

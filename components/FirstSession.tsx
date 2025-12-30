@@ -35,10 +35,10 @@ export default function FirstSession() {
     <section
       id="firstsession"
       ref={ref}
-      className="py-32 px-6 lg:px-8 bg-primary-50"
+      className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-primary-50"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-12 lg:space-y-16">
           {/* Header */}
           <motion.div
             {...fadeInUp}

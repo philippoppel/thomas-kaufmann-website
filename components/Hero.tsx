@@ -16,12 +16,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center px-6 lg:px-8 pt-32 lg:pt-36 pb-20 bg-gradient-to-b from-primary-100 via-primary-50 to-white"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-36 pb-12 sm:pb-20 bg-gradient-to-b from-primary-100 via-primary-50 to-white"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Text Content */}
-          <div className="lg:col-span-7 space-y-10">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 lg:space-y-10">
             {/* Eyebrow */}
             <motion.div
               initial={fadeIn.initial}
@@ -41,7 +41,7 @@ export default function Hero() {
                 initial={fadeInUp.initial}
                 animate={fadeInUp.animate}
                 transition={{ delay: 0.4, duration: duration.slow, ease: easing.apple }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 tracking-tight relative inline-block"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 tracking-tight relative inline-block"
               >
                 <span className="relative">
                   Thomas Kaufmann
@@ -64,7 +64,7 @@ export default function Hero() {
               initial={fadeInUp.initial}
               animate={fadeInUp.animate}
               transition={{ delay: 0.7, duration: duration.slow, ease: easing.apple }}
-              className="text-2xl md:text-3xl lg:text-4xl text-neutral-700 font-light leading-snug max-w-2xl text-balance"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-700 font-light leading-snug max-w-2xl text-balance"
             >
               Im Hier und Jetzt an{' '}
               <span className="relative inline-block">
@@ -88,7 +88,7 @@ export default function Hero() {
               <a
                 href="#contact"
                 onClick={handleContactClick}
-                className="group inline-flex items-center justify-center px-8 py-4 bg-primary-700 text-white rounded-2xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out hover:shadow-soft-lg hover:-translate-y-1"
+                className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-primary-700 text-white rounded-2xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out hover:shadow-soft-lg hover:-translate-y-1"
               >
                 Termin vereinbaren
                 <svg className="ml-2 w-5 h-5 transition-transform duration-500 ease-out group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -101,7 +101,7 @@ export default function Hero() {
                   e.preventDefault()
                   document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-300 text-neutral-900 rounded-2xl font-medium hover:border-primary-500 hover:bg-primary-50 transition-all duration-500 ease-out"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-300 text-neutral-900 rounded-2xl font-medium hover:border-primary-500 hover:bg-primary-50 transition-all duration-500 ease-out"
               >
                 Mehr erfahren
               </a>
@@ -112,7 +112,7 @@ export default function Hero() {
               initial={fadeIn.initial}
               animate={fadeIn.animate}
               transition={{ delay: 1.1, duration: duration.slow, ease: easing.apple }}
-              className="grid grid-cols-3 gap-8 pt-8 border-t border-primary-200"
+              className="grid grid-cols-3 gap-4 sm:gap-8 pt-6 sm:pt-8 border-t border-primary-200"
             >
               <div className="space-y-1">
                 <p className="text-xs text-neutral-500 uppercase tracking-wider">Methode</p>
@@ -154,10 +154,10 @@ export default function Hero() {
               initial={fadeInUp.initial}
               animate={fadeInUp.animate}
               transition={{ delay: 1.0, duration: duration.slow, ease: easing.apple }}
-              className="absolute -bottom-6 -left-6 right-6 lg:right-auto lg:w-auto bg-white rounded-2xl shadow-soft-lg p-6 backdrop-blur-sm border-l-4 border-primary-400"
+              className="absolute -bottom-4 sm:-bottom-6 left-0 sm:-left-6 right-0 sm:right-6 lg:right-auto lg:w-auto bg-white rounded-2xl shadow-soft-lg p-4 sm:p-6 backdrop-blur-sm border-l-4 border-primary-400 mx-4 sm:mx-0"
             >
               <p className="text-sm text-neutral-600 mb-1">Praxis</p>
-              <p className="font-semibold text-neutral-900">
+              <p className="font-semibold text-neutral-900 text-sm sm:text-base">
                 Domgasse 14, 4020 Linz
               </p>
             </motion.div>
