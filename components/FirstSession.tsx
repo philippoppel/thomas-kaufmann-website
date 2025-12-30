@@ -49,7 +49,7 @@ export default function FirstSession() {
               Erstgespräch
             </p>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
               <span className="relative inline-block">
                 Der erste Schritt
                 <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
@@ -81,7 +81,7 @@ export default function FirstSession() {
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
           >
             {sessionInfo.map((info) => (
               <motion.div
@@ -128,7 +128,7 @@ export default function FirstSession() {
             {...fadeInUp}
             animate={isInView ? fadeInUp.animate : fadeInUp.initial}
             transition={{ ...fadeInUp.transition, delay: 0.2 }}
-            className="grid md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
           >
             {/* Verschwiegenheit */}
             <div className="bg-white rounded-2xl p-8 border-l-4 border-primary-400">

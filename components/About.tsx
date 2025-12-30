@@ -48,7 +48,7 @@ export default function About() {
               Über mich
             </p>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
               <span className="relative inline-block">
                 Mein Weg zur Psychotherapie
                 <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
@@ -123,7 +123,7 @@ export default function About() {
             <p className="text-lg text-neutral-600 leading-relaxed mb-8">
               Während meiner Ausbildung konnte ich in verschiedenen Praktika wertvolle Erfahrungen sammeln:
             </p>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {practiceLocations.map((location) => {
                 const IconComponent = location.icon
                 return (
@@ -152,7 +152,7 @@ export default function About() {
             {...fadeInUp}
             animate={isInView ? fadeInUp.animate : fadeInUp.initial}
             transition={{ ...fadeInUp.transition, delay: 0.25 }}
-            className="border-l-4 border-primary-400 pl-8 py-4"
+            className="border-l-4 border-primary-400 pl-4 sm:pl-8 py-4"
           >
             <p className="text-xl md:text-2xl text-neutral-700 leading-relaxed italic">
               „Meine Motivation ziehe ich aus der Überzeugung, dass Veränderung möglich ist und jeder Mensch
@@ -184,7 +184,7 @@ export default function About() {
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           >
             {features.map((feature) => (
               <motion.div

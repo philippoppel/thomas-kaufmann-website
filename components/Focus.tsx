@@ -68,7 +68,7 @@ export default function Focus() {
             Therapieangebot & Schwerpunkte
           </p>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 tracking-tight">
             <span className="relative inline-block">
               Wobei ich Sie unterstütze
               <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
@@ -104,13 +104,13 @@ export default function Focus() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {focusAreas.map((area) => (
             <motion.div
               key={area.title}
               variants={staggerItem}
-              className="group relative bg-white rounded-2xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-500 ease-out border border-neutral-100 hover:-translate-y-2"
+              className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-soft-lg transition-all duration-500 ease-out border border-neutral-100 hover:-translate-y-2"
             >
               {/* Number */}
               <div className="absolute top-6 right-6 text-5xl font-bold text-neutral-100 group-hover:text-primary-100 transition-colors duration-500">

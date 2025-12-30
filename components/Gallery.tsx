@@ -49,7 +49,7 @@ export default function Gallery() {
       <section
         id="gallery"
         ref={ref}
-        className="py-32 px-6 lg:px-8 bg-primary-50"
+        className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-primary-50"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -78,7 +78,7 @@ export default function Gallery() {
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
             {images.map((image, index) => (
               <motion.div
@@ -124,7 +124,7 @@ export default function Gallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-6xl aspect-[4/3]"
+              className="relative w-full max-w-[95vw] sm:max-w-4xl md:max-w-6xl aspect-[4/3]"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -138,7 +138,7 @@ export default function Gallery() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-14 right-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 ease-out"
+              className="absolute -top-12 sm:-top-14 right-0 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 ease-out"
               >
                 <XIcon className="w-6 h-6" />
               </button>

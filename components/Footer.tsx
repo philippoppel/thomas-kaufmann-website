@@ -6,12 +6,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-neutral-900 text-neutral-300 py-16 px-6 lg:px-8">
+    <footer className="bg-neutral-900 text-neutral-300 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12">
           {/* About */}
           <div>
-            <h4 className="font-serif text-2xl font-bold text-white mb-4">
+            <h4 className="font-serif text-xl sm:text-2xl font-bold text-white mb-4">
               Thomas Kaufmann
             </h4>
             <p className="text-neutral-400 leading-relaxed mb-2">

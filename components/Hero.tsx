@@ -41,7 +41,7 @@ export default function Hero() {
                 initial={fadeInUp.initial}
                 animate={fadeInUp.animate}
                 transition={{ delay: 0.4, duration: duration.slow, ease: easing.apple }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 tracking-tight relative inline-block"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-neutral-900 tracking-tight relative inline-block"
               >
                 <span className="relative">
                   Thomas Kaufmann
@@ -64,7 +64,7 @@ export default function Hero() {
               initial={fadeInUp.initial}
               animate={fadeInUp.animate}
               transition={{ delay: 0.7, duration: duration.slow, ease: easing.apple }}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-700 font-light leading-snug max-w-2xl text-balance"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-neutral-700 font-light leading-snug max-w-2xl text-balance"
             >
               Im Hier und Jetzt an{' '}
               <span className="relative inline-block">
@@ -112,7 +112,7 @@ export default function Hero() {
               initial={fadeIn.initial}
               animate={fadeIn.animate}
               transition={{ delay: 1.1, duration: duration.slow, ease: easing.apple }}
-              className="grid grid-cols-3 gap-4 sm:gap-8 pt-6 sm:pt-8 border-t border-primary-200"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 pt-6 sm:pt-8 border-t border-primary-200"
             >
               <div className="space-y-1">
                 <p className="text-xs text-neutral-500 uppercase tracking-wider">Methode</p>
@@ -154,7 +154,7 @@ export default function Hero() {
               initial={fadeInUp.initial}
               animate={fadeInUp.animate}
               transition={{ delay: 1.0, duration: duration.slow, ease: easing.apple }}
-              className="absolute -bottom-4 sm:-bottom-6 left-0 sm:-left-6 right-0 sm:right-6 lg:right-auto lg:w-auto bg-white rounded-2xl shadow-soft-lg p-4 sm:p-6 backdrop-blur-sm border-l-4 border-primary-400 mx-4 sm:mx-0"
+              className="absolute -bottom-4 sm:-bottom-6 left-4 right-4 sm:left-0 sm:-left-6 sm:right-6 lg:right-auto lg:w-auto bg-white rounded-2xl shadow-soft-lg p-4 sm:p-6 backdrop-blur-sm border-l-4 border-primary-400"
             >
               <p className="text-sm text-neutral-600 mb-1">Praxis</p>
               <p className="font-semibold text-neutral-900 text-sm sm:text-base">

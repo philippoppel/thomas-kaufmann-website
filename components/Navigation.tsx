@@ -62,7 +62,7 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-24 lg:h-32">
+          <div className="flex items-center justify-between h-16 sm:h-20 md:h-24 lg:h-32">
             {/* Logo */}
             <Link
               href="/"
@@ -73,7 +73,7 @@ export default function Navigation() {
                 alt="Thomas Kaufmann - Psychotherapeut"
                 width={400}
                 height={400}
-                className="h-20 sm:h-28 lg:h-36 w-auto object-contain transition-all duration-700 ease-out group-hover:scale-105 sepia-[0.3] saturate-[1.2] brightness-[0.85] hue-rotate-[350deg] drop-shadow-sm group-hover:drop-shadow-md"
+                className="h-14 sm:h-20 md:h-28 lg:h-36 w-auto object-contain transition-all duration-700 ease-out group-hover:scale-105 sepia-[0.3] saturate-[1.2] brightness-[0.85] hue-rotate-[350deg] drop-shadow-sm group-hover:drop-shadow-md"
                 priority
               />
             </Link>
@@ -138,7 +138,7 @@ export default function Navigation() {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-40 bg-white lg:hidden"
           >
-            <div className="pt-24 px-6 pb-6 h-full flex flex-col">
+            <div className="pt-20 px-4 sm:px-6 pb-6 h-full flex flex-col">
               <ul className="flex flex-col gap-2">
                 {navItems.map((item, index) => (
                   <motion.li
@@ -155,7 +155,7 @@ export default function Navigation() {
                     <a
                       href={getHref(item.href)}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      className="block text-2xl font-semibold text-neutral-900 hover:text-accent-700 transition-all duration-500 ease-out py-3 hover:translate-x-3"
+                      className="block text-xl sm:text-2xl font-semibold text-neutral-900 hover:text-accent-700 transition-all duration-500 ease-out py-3 hover:translate-x-3"
                     >
                       {item.label}
                     </a>
@@ -201,7 +201,7 @@ export default function Navigation() {
                       setIsMobileMenuOpen(false)
                     }
                   }}
-                  className="block w-full text-center px-8 py-4 bg-primary-700 text-white rounded-2xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out"
+                  className="block w-full text-center px-6 sm:px-8 py-3 sm:py-4 bg-primary-700 text-white rounded-2xl font-medium hover:bg-primary-800 transition-all duration-500 ease-out"
                 >
                   Termin vereinbaren
                 </a>

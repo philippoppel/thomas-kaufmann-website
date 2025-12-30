@@ -76,7 +76,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Contact Cards */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {contactInfo.map((item, index) => {
             const IconComponent = item.icon
             const isClickable = item.href !== null
@@ -139,7 +139,7 @@ export default function Contact() {
           {...fadeInUp}
           animate={isInView ? fadeInUp.animate : fadeInUp.initial}
           transition={{ ...fadeInUp.transition, delay: 0.2 }}
-          className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20 mb-8"
+          className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-10 border border-white/20 mb-8"
         >
           <h3 className="text-2xl font-bold text-white mb-8 text-center">
             Preise
@@ -154,7 +154,7 @@ export default function Contact() {
                   <p className="text-white font-medium">{item.label}</p>
                   <p className="text-primary-200 text-sm">{item.duration}</p>
                 </div>
-                <p className="text-2xl font-bold text-white">{item.price}</p>
+                <p className="text-xl sm:text-2xl font-bold text-white">{item.price}</p>
               </div>
             ))}
           </div>
@@ -168,12 +168,12 @@ export default function Contact() {
           {...fadeInUp}
           animate={isInView ? fadeInUp.animate : fadeInUp.initial}
           transition={{ ...fadeInUp.transition, delay: 0.3 }}
-          className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20"
+          className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-10 border border-white/20"
         >
           <h3 className="text-2xl font-bold text-white mb-6 text-center">
             Wichtige Informationen
           </h3>
-          <div className="grid md:grid-cols-2 gap-8 text-white">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 text-white">
             <div>
               <p className="text-primary-100 text-sm font-medium mb-2">Sitzungsdauer</p>
               <p className="text-lg">50 Minuten (therapeutische Stunde)</p>

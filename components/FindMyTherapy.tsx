@@ -27,7 +27,7 @@ export default function FindMyTherapy() {
     <section
       id="findmytherapy"
       ref={ref}
-      className="py-32 px-6 lg:px-8 bg-primary-50"
+      className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-primary-50"
     >
       <div className="max-w-6xl mx-auto">
         <div className="space-y-16">
@@ -41,7 +41,7 @@ export default function FindMyTherapy() {
               Mitgründer
             </p>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 tracking-tight">
               <span className="relative inline-block">
                 FindMyTherapy
                 <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-200/60 -z-10 transform -skew-x-2" />
@@ -115,7 +115,7 @@ export default function FindMyTherapy() {
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           >
             {features.map((feature) => (
               <motion.div
